@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Стэк">
+<meta name="theme-color" content="#0d0f1a">
+<title>Ноотропный Стэк</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--bg:#0d0f1a;--s1:#131629;--s2:#1a1f38;--bd:#252a45;--acc:#4f7cff;--g:#2ecc8a;--o:#ff7c4f;--r:#ff4f6b;--y:#ffc44f;--t:#4fd4c8;--p:#9b59ff;--tx:#e8eaf6;--tx2:#8892b0;--tx3:#4a5280}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,system-ui,sans-serif;display:flex;flex-direction:column;font-size:14px}
+#hdr{background:linear-gradient(135deg,var(--s1),var(--s2));padding:14px 16px 10px;border-bottom:1px solid var(--bd);flex-shrink:0}
+#hdr h1{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--acc),#7c4fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hrow{display:flex;justify-content:space-between;align-items:flex-end;margin-top:5px}
+.hsub{font-size:11px;color:var(--tx2)}
+.bdg{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:5px 11px;text-align:right}
+.bdg-d{font-size:14px;font-weight:700;color:var(--acc)}
+.bdg-s{font-size:10px;color:var(--tx2);margin-top:1px}
+#prog{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin:8px 12px 0;flex-shrink:0}
+.pr{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}
+.pb{height:5px;background:var(--bd);border-radius:100px;overflow:hidden}
+.pf{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--acc),#7c4fff);transition:width 1s}
+.dots{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.dot{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)}
+.dotc{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+#tabs{display:flex;gap:6px;padding:8px 12px 0;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+#tabs::-webkit-scrollbar{display:none}
+.tab{padding:7px 14px;border-radius:100px;border:1px solid var(--bd);background:var(--s1);color:var(--tx2);font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;font-family:inherit}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+#content{flex:1;overflow-y:auto;padding:12px 12px 32px;-webkit-overflow-scrolling:touch}
+.pane{display:none}
+.pane.on{display:block}
+.tlbl{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;padding-bottom:6px;border-bottom:1px solid var(--bd);margin-bottom:7px;margin-top:14px}
+.tlbl:first-child{margin-top:0}
+.di{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--s1);border-radius:8px;margin-bottom:5px}
+.dc{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dn{flex:1;font-size:13px;font-weight:500}
+.dd{font-size:11px;color:var(--tx2)}
+.empty{text-align:center;color:var(--tx2);padding:40px 0;font-size:14px;line-height:1.8}
+.alert-box{margin-top:12px;padding:11px 13px;background:rgba(255,79,107,.08);border:1px solid rgba(255,79,107,.3);border-radius:10px;font-size:12px;color:var(--r);font-weight:600;line-height:1.8}
+.upcoming-box{margin-top:14px;padding-top:14px;border-top:1px solid var(--bd)}
+.ub-lbl{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.ur{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:13px;padding:13px;margin-bottom:9px;position:relative;overflow:hidden}
+.ctop{position:absolute;top:0;left:0;right:0;height:3px}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px}
+.cname{font-size:13px;font-weight:600;flex:1;padding-right:8px;line-height:1.3}
+.sbdg{font-size:9px;font-weight:700;padding:3px 7px;border-radius:100px;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
+.cdates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px}
+.dl{font-size:9px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px}
+.dv{font-size:12px;font-weight:600;margin-top:1px}
+.mbar{height:3px;background:var(--bd);border-radius:100px;overflow:hidden;margin-bottom:7px}
+.mfill{height:100%;border-radius:100px}
+.cfoot{display:flex;justify-content:space-between;font-size:11px;color:var(--tx2)}
+.wtxt{font-size:10px;color:var(--r);margin-top:5px}
+.glbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:14px 0 9px}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cnb{width:34px;height:34px;border-radius:8px;border:1px solid var(--bd);background:var(--s1);color:var(--tx);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit}
+.cmth{font-size:16px;font-weight:700}
+.cwrap{background:var(--s1);border:1px solid var(--bd);border-radius:13px;overflow:hidden}
+.cwdrow{display:grid;grid-template-columns:repeat(7,1fr);background:var(--s2);border-bottom:1px solid var(--bd)}
+.cwd{padding:7px 2px;text-align:center;font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cday{min-height:60px;padding:5px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);cursor:pointer;transition:background .15s}
+.cday:hover{background:var(--s2)}
+.cday:nth-child(7n){border-right:none}
+.cday.istoday{background:rgba(79,124,255,.08)}
+.cday.other{opacity:.25;pointer-events:none}
+.cnum{width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:600;color:var(--tx2);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.cnum.tn{background:var(--acc);color:#fff}
+.cev{font-size:8px;padding:1px 3px;border-radius:2px;margin-bottom:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:none;align-items:flex-end;justify-content:center;animation:fi .2s}
+.sheet{background:var(--s1);border:1px solid var(--bd);border-radius:20px 20px 0 0;padding:20px 16px 40px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;animation:su .25s}
+.sh-date{font-size:11px;color:var(--tx2);margin-bottom:3px}
+.sh-title{font-size:17px;font-weight:700;color:var(--acc);margin-bottom:16px}
+.sh-close{float:right;background:var(--bd);border:none;color:var(--tx);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;font-family:inherit;margin-top:-4px}
+.sh-sec{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--bd);margin-top:12px}
+.sh-sec:first-child{margin-top:0}
+.sh-drug{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--s2);border-radius:8px;margin-bottom:5px}
+.sh-dn{flex:1;font-size:13px;font-weight:500}
+.sh-dd{font-size:11px;color:var(--tx2)}
+.sh-pause{padding:10px 12px;background:rgba(255,79,107,.08);border:1px solid rgba(255,79,107,.25);border-radius:8px;font-size:12px;color:var(--r);font-weight:600;margin-bottom:10px}
+.tli{display:flex;gap:11px;margin-bottom:3px}
+.tld{font-size:10px;color:var(--tx3);min-width:62px;text-align:right;padding-top:3px;flex-shrink:0}
+.tldot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.tlb{flex:1;padding-bottom:9px;border-bottom:1px solid var(--bd)}
+.tll{font-size:12px;font-weight:600}
+.tldesc{font-size:11px;color:var(--tx2);margin-top:2px}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes su{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<div id="hdr">
+  <h1>НООТРОПНЫЙ СТЭК</h1>
+  <div class="hrow">
+    <div class="hsub">Старт 4 июня 2026 &bull; Конец 6 октября 2026</div>
+    <div class="bdg">
+      <div class="bdg-d" id="hDate">—</div>
+      <div class="bdg-s" id="hSub">—</div>
+    </div>
+  </div>
+</div>
+
+<div id="prog">
+  <div class="pr">
+    <span style="color:var(--tx2);font-size:11px">Прогресс курса</span>
+    <span style="font-weight:700;font-size:12px" id="hPct">0%</span>
+  </div>
+  <div class="pb"><div class="pf" id="hBar" style="width:0%"></div></div>
+  <div class="dots">
+    <div class="dot"><div class="dotc" style="background:#4fd4c8"></div>Фундамент</div>
+    <div class="dot"><div class="dotc" style="background:#4f7cff"></div>CDP+Ноопепт (нед.3)</div>
+    <div class="dot"><div class="dotc" style="background:#ff7c4f"></div>Lion's Mane (нед.4)</div>
+    <div class="dot"><div class="dotc" style="background:#2ecc8a"></div>Родиола (нед.5)</div>
+    <div class="dot"><div class="dotc" style="background:#9b59ff"></div>Бакопа (нед.6)</div>
+  </div>
+</div>
+
+<div id="tabs">
+  <button class="tab on"  onclick="showTab('today')">Сегодня</button>
+  <button class="tab"     onclick="showTab('drugs')">Препараты</button>
+  <button class="tab"     onclick="showTab('calendar')">Календарь</button>
+  <button class="tab"     onclick="showTab('timeline')">Хронология</button>
+</div>
+
+<div id="content">
+  <div id="pane-today"    class="pane on"></div>
+  <div id="pane-drugs"    class="pane"></div>
+  <div id="pane-calendar" class="pane"></div>
+  <div id="pane-timeline" class="pane"></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeSheet(event)">
+  <div class="sheet">
+    <button class="sh-close" onclick="document.getElementById('overlay').style.display='none'">x</button>
+    <div class="sh-date"  id="shDate"></div>
+    <div class="sh-title" id="shTitle"></div>
+    <div id="shBody"></div>
+  </div>
+</div>
+
+<script>
+// ── HELPERS ────────────────────────────────────────────────────────────────
+function mkd(y,m,d){var r=new Date(y,m,d);r.setHours(0,0,0,0);return r;}
+function addD(dt,n){var r=new Date(dt);r.setDate(r.getDate()+n);return r;}
+function dEq(a,b){return a.getTime()===b.getTime();}
+function dLt(a,b){return a.getTime()<b.getTime();}
+function dGt(a,b){return a.getTime()>b.getTime();}
+function dLte(a,b){return a.getTime()<=b.getTime();}
+function dGte(a,b){return a.getTime()>=b.getTime();}
+function daysBetween(a,b){return Math.round((b.getTime()-a.getTime())/86400000);}
+var MO=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+var WD=['вс','пн','вт','ср','чт','пт','сб'];
+var MOFU=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+function fs(d){return d.getDate()+' '+MO[d.getMonth()];}
+function ff(d){return d.getDate()+' '+MO[d.getMonth()]+' ('+WD[d.getDay()]+')';}
+
+// ── DATES ──────────────────────────────────────────────────────────────────
+var START  = mkd(2026,5,4);
+var END    = mkd(2026,9,6);
+var MINI_S = mkd(2026,7,18);
+var MINI_E = mkd(2026,7,31);
+var ROD_S  = mkd(2026,7,13);
+var ROD_E  = mkd(2026,7,26);
+var today  = new Date(); today.setHours(0,0,0,0);
+
+// ── DRUGS ──────────────────────────────────────────────────────────────────
+var DRUGS = [
+  {n:'Омега-3 Lemcaps',       g:'fund',c:'#4fd4c8',s:mkd(2026,5,4), e:END, dose:'1 капс.', t:'утро',      perm:1},
+  {n:'Магний Бисглицинат+B6', g:'fund',c:'#4fd4c8',s:mkd(2026,5,4), e:END, dose:'2 капс.', t:'вечер',     perm:1},
+  {n:'Витамин D3 Вигантол',   g:'fund',c:'#4fd4c8',s:mkd(2026,5,4), e:END, dose:'4 капли', t:'утро',      perm:1},
+  {n:'B-комплекс VitaMeal',   g:'fund',c:'#4fd4c8',s:mkd(2026,5,4), e:END, dose:'1 капс.', t:'утро'},
+  {n:'L-теанин VitaMeal',     g:'fund',c:'#4fd4c8',s:mkd(2026,5,4), e:END, dose:'1 капс.', t:'утро',      perm:1},
+  {n:'Ноопепт 10 мг',         g:'noot',c:'#4f7cff',s:mkd(2026,5,18),e:END, dose:'10мг x2', t:'утро+обед', mb:1, w:'До 14:00! Пауза 18-31 авг.'},
+  {n:'CDP-холин Double Wood',  g:'noot',c:'#4f7cff',s:mkd(2026,5,18),e:END, dose:'300мг x2',t:'утро+обед', mb:1},
+  {n:"Lion's Mane IPSUM",     g:'noot',c:'#4f7cff',s:mkd(2026,5,25),e:END, dose:'2 капс.', t:'вечер'},
+  {n:'Гинкго Biloba DB',      g:'noot',c:'#4f7cff',s:mkd(2026,5,18),e:END, dose:'1 капс.', t:'утро',      mb:1},
+  {n:'Родиола GLS',           g:'anti',c:'#ff7c4f',s:mkd(2026,6,2), e:END, dose:'1 капс.', t:'утро',      rb:1, w:'Перерыв 13-26 авг.'},
+  {n:'Бакопа Himalaya',       g:'anti',c:'#9b59ff',s:mkd(2026,6,9), e:END, dose:'1 табл.', t:'вечер'}
+];
+
+var SL={active:'Активен',upcoming:'Скоро',brk:'Перерыв',perm:'Постоянно',done:'Завершён'};
+var SC={active:'#2ecc8a',upcoming:'#4f7cff',brk:'#ff4f6b',perm:'#4fd4c8',done:'#4a5280'};
+
+function inMB(d,dt){return d.mb && dGte(dt,MINI_S) && dLte(dt,MINI_E);}
+function inRB(d,dt){return d.rb && dGte(dt,ROD_S)  && dLte(dt,ROD_E);}
+
+function getStatus(drug, dt) {
+  if (inMB(drug,dt)||inRB(drug,dt)) return 'brk';
+  if (dLt(dt,drug.s)) return 'upcoming';
+  if (dGt(dt,drug.e)) return 'done';
+  if (drug.perm) return 'perm';
+  return 'active';
+}
+
+function getDrugs(dt) {
+  var mor=[],lun=[],eve=[],paused=[];
+  DRUGS.forEach(function(d) {
+    if (dLt(dt,d.s)||dGt(dt,d.e)) return;
+    if (inMB(d,dt)||inRB(d,dt)) { paused.push(d); return; }
+    if (d.t.indexOf('утро')>=0)  mor.push(d);
+    if (d.t.indexOf('обед')>=0)  lun.push(d);
+    if (d.t.indexOf('вечер')>=0) eve.push(d);
+  });
+  return {mor:mor, lun:lun, eve:eve, paused:paused};
+}
+
+// ── HEADER ─────────────────────────────────────────────────────────────────
+function updateHeader() {
+  document.getElementById('hDate').textContent = ff(today);
+  var inC = dGte(today,START) && dLte(today,END);
+  var sub = inC ? ('День курса: '+(daysBetween(START,today)+1))
+          : dLt(today,START) ? ('До старта: '+daysBetween(today,START)+' дн.')
+          : 'Курс завершён';
+  document.getElementById('hSub').textContent = sub;
+  var total = daysBetween(START,END);
+  var pct = today<START ? 0 : today>END ? 100 : Math.min(100,Math.round((daysBetween(START,today)/total)*100));
+  document.getElementById('hPct').textContent = pct+'%';
+  document.getElementById('hBar').style.width = pct+'%';
+}
+
+// ── TODAY ──────────────────────────────────────────────────────────────────
+function renderToday() {
+  var r = getDrugs(today);
+  var h = '';
+
+  if (!r.mor.length && !r.lun.length && !r.eve.length && !r.paused.length) {
+    h = '<div class="empty">'+(dLt(today,START) ? 'Курс начнётся<br>'+ff(START) : 'Нет активных препаратов')+'</div>';
+  } else {
+    var blocks = [['☀️ УТРОМ — с едой',r.mor],['🕐 ОБЕД — до 14:00',r.lun],['🌙 ВЕЧЕРОМ — с едой',r.eve]];
+    blocks.forEach(function(b) {
+      if (!b[1].length) return;
+      h += '<div class="tlbl">'+b[0]+'</div>';
+      b[1].forEach(function(d) {
+        h += '<div class="di"><div class="dc" style="background:'+d.c+'"></div><div class="dn">'+d.n+'</div><div class="dd">'+d.dose+'</div></div>';
+      });
+    });
+  }
+
+  var alerts = [];
+  if (dGte(today,MINI_S)&&dLte(today,MINI_E)) alerts.push('ПАУЗА: Ноопепт + CDP-холин + Гинкго — не принимать (18–31 авг.)');
+  if (dGte(today,ROD_S) &&dLte(today,ROD_E))  alerts.push('ПЕРЕРЫВ: Родиола — не принимать (13–26 авг.)');
+  if (alerts.length) {
+    h += '<div class="alert-box">';
+    alerts.forEach(function(a){ h += '⚠️ '+a+'<br>'; });
+    h += '</div>';
+  }
+
+  var up = DRUGS.filter(function(d){ var dd=daysBetween(today,d.s); return dd>0&&dd<=14; });
+  if (up.length) {
+    h += '<div class="upcoming-box"><div class="ub-lbl">Скоро добавить</div>';
+    up.forEach(function(d) {
+      h += '<div class="ur"><div class="dc" style="background:'+d.c+'"></div><span style="flex:1">'+d.n+'</span><span style="color:var(--y);font-weight:700">через '+daysBetween(today,d.s)+' дн.</span></div>';
+    });
+    h += '</div>';
+  }
+
+  document.getElementById('pane-today').innerHTML = h;
+}
+
+// ── DRUGS ──────────────────────────────────────────────────────────────────
+function renderDrugs() {
+  var groups = [['fund','#4fd4c8','ФУНДАМЕНТ'],['noot','#4f7cff','НООТРОПНЫЙ БЛОК'],['anti','#ff7c4f','АНТИСТРЕСС']];
+  var h = '';
+  groups.forEach(function(g) {
+    h += '<div class="glbl" style="color:'+g[1]+'">'+g[2]+'</div>';
+    DRUGS.filter(function(d){return d.g===g[0];}).forEach(function(drug) {
+      var st = getStatus(drug,today);
+      var total = daysBetween(drug.s,drug.e);
+      var elapsed = Math.max(0,Math.min(total,daysBetween(drug.s,today)));
+      var p = st==='upcoming' ? 0 : Math.round((elapsed/total)*100);
+      var dL = (st==='active'||st==='perm') ? daysBetween(today,drug.e) : st==='upcoming' ? daysBetween(today,drug.s) : null;
+      var dLtxt = dL!==null ? (st==='upcoming'?'через '+dL+' дн.':dL+' дн. осталось') : (st==='done'?'завершён':'');
+      var dLc = dL!==null&&dL<=7 ? 'var(--y)' : st==='upcoming' ? 'var(--acc)' : 'var(--tx2)';
+      h += '<div class="card">'
+        +'<div class="ctop" style="background:'+SC[st]+'"></div>'
+        +'<div class="chead"><div class="cname">'+drug.n+'</div>'
+        +'<span class="sbdg" style="background:'+SC[st]+'22;color:'+SC[st]+'">'+SL[st]+'</span></div>'
+        +'<div class="cdates"><div><div class="dl">Начало</div><div class="dv">'+fs(drug.s)+'</div></div>'
+        +'<div><div class="dl">Конец</div><div class="dv">'+fs(drug.e)+'</div></div></div>'
+        +'<div class="mbar"><div class="mfill" style="width:'+p+'%;background:'+drug.c+'"></div></div>'
+        +'<div class="cfoot"><span>'+drug.dose+' &bull; '+drug.t+'</span>'
+        +'<span style="font-weight:700;color:'+dLc+'">'+dLtxt+'</span></div>'
+        +(drug.w?'<div class="wtxt">⚠ '+drug.w+'</div>':'')
+        +'</div>';
+    });
+  });
+  document.getElementById('pane-drugs').innerHTML = h;
+}
+
+// ── CALENDAR ───────────────────────────────────────────────────────────────
+var calY = today.getFullYear();
+var calM = today.getMonth();
+
+function renderCal() {
+  var first = new Date(calY,calM,1);
+  var last  = new Date(calY,calM+1,0);
+  var dow = first.getDay(); if(dow===0) dow=7;
+  var h = '<div class="cal-nav">'
+    +'<button class="cnb" onclick="prevM()">&#8249;</button>'
+    +'<span class="cmth">'+MOFU[calM]+' '+calY+'</span>'
+    +'<button class="cnb" onclick="nextM()">&#8250;</button>'
+    +'</div>'
+    +'<div class="cwrap">'
+    +'<div class="cwdrow">'+['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(function(d){return '<div class="cwd">'+d+'</div>';}).join('')+'</div>'
+    +'<div class="cgrid">';
+
+  var cur = new Date(first); cur.setDate(cur.getDate()-(dow-1));
+  for (var w=0; w<6; w++) {
+    for (var d=0; d<7; d++) {
+      var isT = cur.toDateString()===today.toDateString();
+      var isO = cur.getMonth()!==calM;
+      var dt  = new Date(cur); dt.setHours(0,0,0,0);
+      var r   = getDrugs(dt);
+      var all = r.mor.concat(r.lun).concat(r.eve);
+      var Y=cur.getFullYear(), Mo=cur.getMonth(), Da=cur.getDate();
+
+      h += '<div class="cday'+(isT?' istoday':'')+(isO?' other':'')+'" onclick="openDay('+Y+','+Mo+','+Da+')">'
+        +'<div class="cnum'+(isT?' tn':'')+'">'+cur.getDate()+'</div>';
+
+      if (r.paused.length) {
+        h += '<div class="cev" style="background:rgba(255,79,107,.15);color:#ff4f6b">&#9208; Пауза</div>';
+      }
+      var seen = {}, shown = 0;
+      all.forEach(function(e) {
+        if (!seen[e.c] && shown<3) { seen[e.c]=1; shown++;
+          h += '<div class="cev" style="background:'+e.c+'22;color:'+e.c+'">'+e.n.split(' ')[0]+'</div>';
+        }
+      });
+      if (all.length > shown) h += '<div style="font-size:8px;color:var(--tx3)">+'+(all.length-shown)+'</div>';
+      h += '</div>';
+      cur.setDate(cur.getDate()+1);
+    }
+    if (cur>last && w>=3) break;
+  }
+  h += '</div></div>';
+  document.getElementById('pane-calendar').innerHTML = h;
+}
+
+function prevM(){calM--;if(calM<0){calM=11;calY--;}renderCal();}
+function nextM(){calM++;if(calM>11){calM=0;calY++;}renderCal();}
+
+// ── DAY SHEET ──────────────────────────────────────────────────────────────
+function openDay(Y,Mo,Da) {
+  var dt = mkd(Y,Mo,Da);
+  var r  = getDrugs(dt);
+  var inC = dGte(dt,START)&&dLte(dt,END);
+  var dNum = inC ? (daysBetween(START,dt)+1) : null;
+
+  document.getElementById('shDate').textContent  = ff(dt);
+  document.getElementById('shTitle').textContent = dNum ? ('День курса '+dNum) : (dLt(dt,START)?'До старта':'После курса');
+
+  var body = '';
+
+  if (r.paused.length) {
+    body += '<div class="sh-pause">';
+    r.paused.forEach(function(d) {
+      if (inMB(d,dt)) body += '⏸ '+d.n+' — ПАУЗА (18–31 авг.)<br>';
+      if (inRB(d,dt)) body += '⏸ '+d.n+' — ПЕРЕРЫВ (13–26 авг.)<br>';
+    });
+    body += '</div>';
+  }
+
+  var all = r.mor.concat(r.lun).concat(r.eve);
+  if (!all.length && !r.paused.length) {
+    body += '<div style="color:var(--tx2);font-size:13px;text-align:center;padding:20px 0">'+(dLt(dt,START)?'Курс ещё не начался':'Нет активных препаратов')+'</div>';
+  } else {
+    var blocks = [['☀️ УТРОМ — с едой',r.mor],['🕐 ОБЕД — до 14:00',r.lun],['🌙 ВЕЧЕРОМ — с едой',r.eve]];
+    blocks.forEach(function(b) {
+      if (!b[1].length) return;
+      body += '<div class="sh-sec">'+b[0]+'</div>';
+      b[1].forEach(function(d) {
+        body += '<div class="sh-drug"><div class="dc" style="background:'+d.c+'"></div><div class="sh-dn">'+d.n+'</div><div class="sh-dd">'+d.dose+'</div></div>';
+      });
+    });
+  }
+
+  document.getElementById('shBody').innerHTML = body;
+  document.getElementById('overlay').style.display = 'flex';
+}
+
+function closeSheet(e) {
+  if (e.target.id==='overlay') document.getElementById('overlay').style.display='none';
+}
+
+// ── TIMELINE ───────────────────────────────────────────────────────────────
+var TL = [
+  {dt:mkd(2026,5,4),  l:'СТАРТ курса',               d:'Фундамент: Омега-3, D3, B, Теанин, Магний',      c:'#4fd4c8'},
+  {dt:mkd(2026,5,18), l:'Неделя 3',                  d:'+ CDP-холин + Гинкго + Ноопепт (утро+обед)',      c:'#4f7cff'},
+  {dt:mkd(2026,5,25), l:'Неделя 4',                  d:"+ Lion's Mane (вечером)",                         c:'#ff7c4f'},
+  {dt:mkd(2026,6,2),  l:'Неделя 5',                  d:'+ Родиола розовая (утром)',                        c:'#2ecc8a'},
+  {dt:mkd(2026,6,9),  l:'Неделя 6 — ПОЛНЫЙ СТЭК',   d:'+ Бакопа Himalaya (вечером)',                      c:'#9b59ff'},
+  {dt:mkd(2026,7,13), l:'Родиола — ПЕРЕРЫВ',         d:'Не принимать 14 дней (до 26 августа)',             c:'#ff4f6b'},
+  {dt:mkd(2026,7,18), l:'Ноопепт+CDP+Гинкго — ПАУЗА',d:'Мини-перерыв 14 дней (до 31 августа)',            c:'#ff4f6b'},
+  {dt:mkd(2026,7,27), l:'Родиола — возобновить',     d:'Продолжить приём до 6 октября',                   c:'#2ecc8a'},
+  {dt:mkd(2026,8,1),  l:'Ноопепт+CDP+Гинкго — старт',d:'Возобновить после мини-перерыва',                 c:'#4f7cff'},
+  {dt:mkd(2026,9,6),  l:'КОНЕЦ КУРСА',               d:'Перерыв 1 месяц для всех курсовых препаратов',    c:'#ff4f6b'},
+  {dt:mkd(2026,10,7), l:'СТАРТ ЦИКЛА 2',             d:'Новый усиленный курс',                             c:'#4f7cff'}
+];
+
+function renderTimeline() {
+  var h = '';
+  TL.forEach(function(ev) {
+    var past = dLt(ev.dt,today) && !dEq(ev.dt,today);
+    var isCur = dEq(ev.dt,today);
+    h += '<div class="tli" style="opacity:'+(past?'.5':'1')+'">'
+      +'<div class="tld">'+fs(ev.dt)+'</div>'
+      +'<div class="tldot" style="background:'+ev.c+'"></div>'
+      +'<div class="tlb"><div class="tll">'+ev.l+(isCur?' &larr; сегодня':'')+'</div>'
+      +'<div class="tldesc">'+ev.d+'</div></div></div>';
+  });
+  document.getElementById('pane-timeline').innerHTML = h;
+}
+
+// ── TABS ───────────────────────────────────────────────────────────────────
+function showTab(name) {
+  var tabs = ['today','drugs','calendar','timeline'];
+  tabs.forEach(function(t) {
+    var pane = document.getElementById('pane-'+t);
+    var rendered = pane.getAttribute('data-rendered');
+    pane.className = 'pane' + (t===name?' on':'');
+    if (t===name && !rendered) {
+      if (t==='today')    renderToday();
+      if (t==='drugs')    renderDrugs();
+      if (t==='calendar') renderCal();
+      if (t==='timeline') renderTimeline();
+      pane.setAttribute('data-rendered','1');
+    }
+  });
+  document.querySelectorAll('#tabs .tab').forEach(function(b,i) {
+    b.classList.toggle('on', tabs[i]===name);
+  });
+  if (name==='today') { renderToday(); }
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+updateHeader();
+renderToday();
+document.getElementById('pane-today').setAttribute('data-rendered','1');
+</script>
+</body>
+</html>
