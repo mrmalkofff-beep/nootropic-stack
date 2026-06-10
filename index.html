@@ -9,54 +9,36 @@
 <meta name="theme-color" content="#0d0f1a">
 <title>Ноотропный Стэк</title>
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.png">
 <style>
-:root {
-  --bg:#0d0f1a; --s1:#131629; --s2:#1a1f38; --bd:#252a45;
-  --acc:#4f7cff; --acc2:#7c4fff; --grn:#2ecc8a; --org:#ff7c4f;
-  --red:#ff4f6b; --pur:#9b59ff; --tel:#4fd4c8; --yel:#ffc44f;
-  --tx:#e8eaf6; --tx2:#8892b0; --tx3:#4a5280;
-}
+:root{--bg:#0d0f1a;--s1:#131629;--s2:#1a1f38;--bd:#252a45;--acc:#4f7cff;--acc2:#7c4fff;--grn:#2ecc8a;--org:#ff7c4f;--red:#ff4f6b;--pur:#9b59ff;--tel:#4fd4c8;--yel:#ffc44f;--tx:#e8eaf6;--tx2:#8892b0;--tx3:#4a5280;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
-body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif;font-size:14px;display:flex;flex-direction:column}
-
-/* HEADER */
-.hdr{background:linear-gradient(135deg,var(--s1),var(--s2));padding:16px 16px 12px;border-bottom:1px solid var(--bd);flex-shrink:0}
-.hdr h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
-.hdr-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:6px}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:14px;display:flex;flex-direction:column}
+.hdr{background:linear-gradient(135deg,var(--s1),var(--s2));padding:14px 16px 10px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.hdr h1{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.hdr-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:5px}
 .hdr-sub{font-size:11px;color:var(--tx2)}
-.badge{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:6px 12px;text-align:right}
-.badge-date{font-size:15px;font-weight:700;color:var(--acc)}
-.badge-sub{font-size:11px;color:var(--tx2);margin-top:1px}
-
-/* PROGRESS */
-.prog{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin:10px 12px 0}
-.prog-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+.badge{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:5px 11px;text-align:right}
+.badge-date{font-size:14px;font-weight:700;color:var(--acc)}
+.badge-sub{font-size:10px;color:var(--tx2);margin-top:1px}
+.prog{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin:8px 12px 0}
+.prog-row{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}
 .prog-bar{height:5px;background:var(--bd);border-radius:100px;overflow:hidden}
 .prog-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width 1s}
-.prog-dots{display:flex;gap:10px;flex-wrap:wrap;margin-top:7px}
+.prog-dots{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .pd{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)}
 .pd-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-
-/* TABS */
-.tabs{display:flex;gap:6px;padding:10px 12px 0;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;gap:6px;padding:8px 12px 0;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:7px 14px;border-radius:100px;border:1px solid var(--bd);background:var(--s1);color:var(--tx2);font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;-webkit-appearance:none;font-family:inherit}
 .tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
-
-/* CONTENT */
 .content{flex:1;overflow-y:auto;padding:12px 12px 24px;-webkit-overflow-scrolling:touch}
-
-/* TIME BLOCKS */
 .tblock{margin-bottom:16px}
 .tlabel{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;padding-bottom:6px;border-bottom:1px solid var(--bd);margin-bottom:7px}
 .ditem{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--s1);border-radius:8px;margin-bottom:5px}
 .ddot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .dname{flex:1;font-size:13px;font-weight:500}
 .ddose{font-size:11px;color:var(--tx2)}
-
-/* UPCOMING / RESTOCK */
 .section-sep{margin-top:16px;padding-top:14px;border-top:1px solid var(--bd)}
 .sec-mini-label{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
 .urow{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px}
@@ -64,8 +46,6 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .restock-title{font-size:12px;font-weight:700;color:var(--yel);margin-bottom:6px}
 .restock-row{font-size:11px;color:var(--tx2);margin-bottom:3px}
 .empty{text-align:center;color:var(--tx2);padding:40px 0;font-size:14px}
-
-/* DRUG CARDS */
 .card{background:var(--s1);border:1px solid var(--bd);border-radius:13px;padding:13px;margin-bottom:9px;position:relative;overflow:hidden}
 .card-top{position:absolute;top:0;left:0;right:0;height:3px}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px}
@@ -78,9 +58,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .mini-fill{height:100%;border-radius:100px;transition:width 1s}
 .card-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--tx2)}
 .warn-txt{font-size:10px;color:var(--red);margin-top:5px}
-.buy-txt{font-size:10px;color:var(--yel);margin-top:5px}
 .group-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:14px 0 9px}
-
 /* CALENDAR */
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .cal-nav-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--bd);background:var(--s1);color:var(--tx);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit}
@@ -89,14 +67,29 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .cal-wd-row{display:grid;grid-template-columns:repeat(7,1fr);background:var(--s2);border-bottom:1px solid var(--bd)}
 .cal-wd{padding:7px 2px;text-align:center;font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
-.cal-day{min-height:52px;padding:4px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.cal-day{min-height:58px;padding:5px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);cursor:pointer;transition:background 0.15s;position:relative}
 .cal-day:nth-child(7n){border-right:none}
+.cal-day:hover{background:var(--s2)}
 .cal-day.today{background:rgba(79,124,255,.08)}
-.cal-day.other{opacity:.25}
-.cal-num{width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:600;color:var(--tx2);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.cal-day.other{opacity:.25;pointer-events:none}
+.cal-day.has-event{cursor:pointer}
+.cal-num{width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:600;color:var(--tx2);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
 .cal-num.today-num{background:var(--acc);color:#fff}
 .cal-ev{font-size:8px;padding:1px 3px;border-radius:2px;margin-bottom:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease}
+.modal{background:var(--s1);border:1px solid var(--bd);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;animation:slideUp .25s ease}
+.modal-date{font-size:12px;color:var(--tx2);margin-bottom:4px}
+.modal-title{font-size:18px;font-weight:700;margin-bottom:16px;color:var(--acc)}
+.modal-close{float:right;background:var(--bd);border:none;color:var(--tx);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;font-family:inherit;margin-top:-4px}
+.modal-section{margin-bottom:14px}
+.modal-sec-label{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--bd)}
+.modal-drug{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--s2);border-radius:8px;margin-bottom:5px}
+.modal-drug-name{flex:1;font-size:13px;font-weight:500}
+.modal-drug-dose{font-size:11px;color:var(--tx2)}
+.pause-notice{padding:10px 12px;background:rgba(255,79,107,.08);border:1px solid rgba(255,79,107,.2);border-radius:8px;font-size:12px;color:var(--red);font-weight:600}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 /* TIMELINE */
 .tl-item{display:flex;gap:11px;margin-bottom:3px}
 .tl-date{font-size:10px;color:var(--tx3);min-width:58px;text-align:right;padding-top:3px;flex-shrink:0}
@@ -104,19 +97,6 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .tl-body{flex:1;padding-bottom:9px;border-bottom:1px solid var(--bd)}
 .tl-lbl{font-size:12px;font-weight:600}
 .tl-desc{font-size:11px;color:var(--tx2);margin-top:2px}
-
-/* SHOPPING */
-.shop-card{border-radius:13px;overflow:hidden;margin-bottom:10px}
-.shop-head{padding:10px 13px;display:flex;justify-content:space-between;align-items:center}
-.shop-head-lbl{font-weight:700;font-size:13px}
-.shop-head-date{font-size:11px;opacity:.8}
-.shop-body{padding:13px}
-.shop-sec{font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.shop-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.shop-total{display:flex;justify-content:flex-end;margin-top:9px;font-size:14px;font-weight:700;color:var(--grn)}
-.total-card{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:13px 14px;margin-top:6px}
-.total-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;color:var(--tx2)}
-.total-final{display:flex;justify-content:space-between;font-size:16px;font-weight:800;padding-top:9px;border-top:1px solid var(--bd)}
 </style>
 </head>
 <body>
@@ -124,7 +104,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 <div class="hdr">
   <h1>НООТРОПНЫЙ СТЭК</h1>
   <div class="hdr-row">
-    <div class="hdr-sub">Календарь приёма • Курс 90 дней</div>
+    <div class="hdr-sub">Старт 4 июня 2026 • Конец 6 октября 2026</div>
     <div class="badge">
       <div class="badge-date" id="todayDate"></div>
       <div class="badge-sub" id="dayInfo"></div>
@@ -152,7 +132,6 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
   <button class="tab" onclick="showTab('drugs',this)">Препараты</button>
   <button class="tab" onclick="showTab('calendar',this)">Календарь</button>
   <button class="tab" onclick="showTab('timeline',this)">Хронология</button>
-  <button class="tab" onclick="showTab('shopping',this)">Покупки</button>
 </div>
 
 <div class="content">
@@ -160,12 +139,21 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
   <div id="tab-drugs" style="display:none"></div>
   <div id="tab-calendar" style="display:none"></div>
   <div id="tab-timeline" style="display:none"></div>
-  <div id="tab-shopping" style="display:none"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" style="display:none" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="document.getElementById('modal').style.display='none'">✕</button>
+    <div class="modal-date" id="modalDate"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div id="modalBody"></div>
+  </div>
 </div>
 
 <script>
 const START = new Date(2026,5,4);
-const END   = new Date(2026,8,2);
+const END   = new Date(2026,8,6); // Oct 6
 
 function addD(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
 function diff(a,b){return Math.round((b-a)/86400000);}
@@ -175,155 +163,121 @@ const MOFU=['Январь','Февраль','Март','Апрель','Май','
 function fs(d){return d.getDate()+' '+MO[d.getMonth()];}
 function ff(d){return d.getDate()+' '+MO[d.getMonth()]+' ('+WD[d.getDay()]+')';}
 
+// Mini-break dates: Noopept+CDP+Ginkgo pause Aug 18–31
+const MINI_BREAK_S = new Date(2026,7,18);
+const MINI_BREAK_E = new Date(2026,7,31);
+// Rhodiola break Aug 13–26
+const ROD_BREAK_S  = new Date(2026,7,13);
+const ROD_BREAK_E  = new Date(2026,7,26);
+
 const DRUGS=[
-  {n:"Омега-3 Lemcaps",      g:"fund",c:"#4fd4c8",s:addD(START,0), e:addD(START,89), dose:"1 капс.",  t:"утро",       cy:"Постоянно",  perm:1, rs:addD(START,50),rn:"Докупить 2-ю уп."},
-  {n:"Магний Бисглицинат+B6",g:"fund",c:"#4fd4c8",s:addD(START,0), e:addD(START,119),dose:"2 капс.",  t:"вечер",      cy:"Постоянно",  perm:1},
-  {n:"Витамин D3 Вигантол",  g:"fund",c:"#4fd4c8",s:addD(START,0), e:addD(START,89), dose:"4 капли",  t:"утро",       cy:"Постоянно",  perm:1, rs:addD(START,45),rn:"Докупить 2-й фл."},
-  {n:"B-комплекс VitaMeal",  g:"fund",c:"#4fd4c8",s:addD(START,0), e:addD(START,89), dose:"1 капс.",  t:"утро",       cy:"3 мес."},
-  {n:"L-теанин VitaMeal",    g:"fund",c:"#4fd4c8",s:addD(START,0), e:addD(START,89), dose:"1 капс.",  t:"утро",       cy:"Постоянно",  perm:1},
-  {n:"Ноопепт 10 мг",        g:"noot",c:"#4f7cff",s:addD(START,14),e:addD(START,89), dose:"10мг×2",  t:"утро+обед",  cy:"3→1 мес.",   w:"Не позже 14:00!", rs:addD(START,42),rn:"Докупить уп.3-4"},
-  {n:"CDP-холин NatureX",    g:"noot",c:"#4f7cff",s:addD(START,14),e:addD(START,89), dose:"400мг×2", t:"утро+обед",  cy:"3→1 мес.",   rs:addD(START,40),rn:"Докупить уп.2",rs2:addD(START,70),rn2:"Докупить уп.3"},
-  {n:"Lion's Mane IPSUM",    g:"noot",c:"#4f7cff",s:addD(START,21),e:addD(START,89), dose:"2 капс.",  t:"вечер",      cy:"3→1 мес.",   rs:addD(START,47),rn:"Докупить уп.2",rs2:addD(START,77),rn2:"Докупить уп.3"},
-  {n:"Гинкго Biloba DB",     g:"anti",c:"#ff7c4f",s:addD(START,14),e:addD(START,89), dose:"1 капс.",  t:"утро",       cy:"3→1 мес."},
-  {n:"Родиола GLS",          g:"anti",c:"#ff7c4f",s:addD(START,28),e:addD(START,89), dose:"1 капс.",  t:"утро",       cy:"6 нед.→2 нед.", bs:addD(START,70),be:addD(START,83), w:"Перерыв: "+fs(addD(START,70))+"–"+fs(addD(START,83))},
-  {n:"Бакопа Himalaya",      g:"anti",c:"#9b59ff",s:addD(START,35),e:addD(START,89), dose:"1 табл.",  t:"вечер",      cy:"3+→1 мес."},
-];
-
-const PURCHASES=[
-  {l:"Покупка 1 — СТАРТ",          dt:START,           col:"#0f3460",
-   oz:[["Омега-3 Lemcaps ×1","~789₽"],["Магний Бисглицинат","~939₽"],["B-комплекс VitaMeal","~423₽"],["L-теанин VitaMeal","~574₽"]],
-   ap:[["Вигантол D3","~200₽"]], tot:"~2 925₽"},
-  {l:"Покупка 2 — Неделя 3",       dt:addD(START,12),  col:"#1b4332",
-   oz:[["CDP-холин NatureX","~2 180₽"],["Гинкго Biloba DB","~1 690₽"]],
-   ap:[["Ноопепт 10мг ×2","~840₽"]], tot:"~4 710₽"},
-  {l:"Покупка 3 — Неделя 4",       dt:addD(START,19),  col:"#c0570a",
-   oz:[["Lion's Mane IPSUM ×1","~971₽"]], ap:[], tot:"~971₽"},
-  {l:"Покупка 4 — Неделя 5",       dt:addD(START,26),  col:"#0e6655",
-   oz:[], ap:[["Родиола GLS 300мг","~700₽"]], tot:"~700₽"},
-  {l:"Покупка 5 — Неделя 6",       dt:addD(START,33),  col:"#6c3483",
-   oz:[["Бакопа Himalaya","~1 275₽"]], ap:[], tot:"~1 275₽"},
-];
-
-const TIMELINE=[
-  {dt:START,            l:"СТАРТ курса",           d:"Фундамент: Омега-3, D3, B, Теанин, Магний", c:"#4fd4c8"},
-  {dt:addD(START,14),   l:"Неделя 3",              d:"+ CDP-холин + Гинкго + Ноопепт (утро+обед)",c:"#4f7cff"},
-  {dt:addD(START,21),   l:"Неделя 4",              d:"+ Lion's Mane (вечером)",                    c:"#ff7c4f"},
-  {dt:addD(START,28),   l:"Неделя 5",              d:"+ Родиола розовая (утром)",                  c:"#2ecc8a"},
-  {dt:addD(START,35),   l:"Неделя 6 — ПОЛНЫЙ СТЭК",d:"+ Бакопа Himalaya (вечером)",               c:"#9b59ff"},
-  {dt:addD(START,42),   l:"Родиола — конец цикла", d:"Перерыв 2 недели — не принимать!",           c:"#ff4f6b"},
-  {dt:addD(START,56),   l:"Родиола — возобновить", d:"Конец перерыва, продолжить приём",           c:"#2ecc8a"},
-  {dt:addD(START,90),   l:"КОНЕЦ КУРСА",           d:"Перерыв 1 месяц для курсовых препаратов",   c:"#ff4f6b"},
-  {dt:addD(START,120),  l:"СТАРТ ЦИКЛА 2",         d:"Новый курс",                                c:"#4f7cff"},
+  {n:"Омега-3 Lemcaps",       g:"fund",c:"#4fd4c8",s:addD(START,0),  e:END,            dose:"1 капс.",  t:"утро",       cy:"Постоянно", perm:1},
+  {n:"Магний Бисглицинат+B6", g:"fund",c:"#4fd4c8",s:addD(START,0),  e:END,            dose:"2 капс.",  t:"вечер",      cy:"Постоянно", perm:1},
+  {n:"Витамин D3 Вигантол",   g:"fund",c:"#4fd4c8",s:addD(START,0),  e:END,            dose:"4 капли",  t:"утро",       cy:"Постоянно", perm:1},
+  {n:"B-комплекс VitaMeal",   g:"fund",c:"#4fd4c8",s:addD(START,0),  e:END,            dose:"1 капс.",  t:"утро",       cy:"125 дней"},
+  {n:"L-теанин VitaMeal",     g:"fund",c:"#4fd4c8",s:addD(START,0),  e:END,            dose:"1 капс.",  t:"утро",       cy:"Постоянно", perm:1},
+  {n:"Ноопепт 10 мг",         g:"noot",c:"#4f7cff",s:addD(START,14), e:END,            dose:"10мг×2",   t:"утро+обед",  cy:"С паузой авг.", w:"До 14:00! Пауза 18–31 авг.", mb:1},
+  {n:"CDP-холин Double Wood",  g:"noot",c:"#4f7cff",s:addD(START,14), e:END,            dose:"300мг×2",  t:"утро+обед",  cy:"С паузой авг.", mb:1},
+  {n:"Lion's Mane IPSUM",      g:"noot",c:"#4f7cff",s:addD(START,21), e:END,            dose:"2 капс.",  t:"вечер",      cy:"Непрерывно"},
+  {n:"Гинкго Biloba DB",       g:"noot",c:"#4f7cff",s:addD(START,14), e:END,            dose:"1 капс.",  t:"утро",       cy:"С паузой авг.", mb:1},
+  {n:"Родиола GLS",            g:"anti",c:"#ff7c4f",s:addD(START,28), e:END,            dose:"1 капс.",  t:"утро",       cy:"Цикл 6/2 нед.", rb:1, w:"Перерыв 13–26 авг."},
+  {n:"Бакопа Himalaya",        g:"anti",c:"#9b59ff",s:addD(START,35), e:END,            dose:"1 табл.",  t:"вечер",      cy:"Непрерывно 90д"},
 ];
 
 const SL={active:"Активен",upcoming:"Скоро",brk:"Перерыв",perm:"Постоянно",done:"Завершён"};
 const SC={active:"#2ecc8a",upcoming:"#4f7cff",brk:"#ff4f6b",perm:"#4fd4c8",done:"#4a5280"};
 
-function getStatus(drug, today) {
-  const inBrk = drug.bs && today >= drug.bs && today <= drug.be;
-  if(inBrk) return "brk";
-  if(today < drug.s) return "upcoming";
-  if(today > drug.e) return "done";
-  if(drug.perm) return "perm";
+const today=new Date();today.setHours(0,0,0,0);
+const cDay=diff(START,today)+1;
+const inCourse=today>=START&&today<=END;
+const pct=today<START?0:today>END?100:Math.min(100,Math.round((diff(START,today)/diff(START,END))*100));
+
+document.getElementById('todayDate').textContent=ff(today);
+document.getElementById('dayInfo').textContent=inCourse?`День курса: ${cDay}`
+  :today<START?`До старта: ${diff(today,START)} дн.`:'Курс завершён';
+document.getElementById('pctLabel').textContent=pct+'%';
+document.getElementById('progFill').style.width=pct+'%';
+
+function isInMiniBreak(drug, dt) {
+  return drug.mb && dt >= MINI_BREAK_S && dt <= MINI_BREAK_E;
+}
+function isInRodBreak(drug, dt) {
+  return drug.rb && dt >= ROD_BREAK_S && dt <= ROD_BREAK_E;
+}
+
+function getStatus(drug, dt) {
+  if (isInMiniBreak(drug, dt) || isInRodBreak(drug, dt)) return "brk";
+  if (dt < drug.s) return "upcoming";
+  if (dt > drug.e) return "done";
+  if (drug.perm) return "perm";
   return "active";
 }
 
-const today = new Date(); today.setHours(0,0,0,0);
-const cDay = diff(START, today)+1;
-const inCourse = today >= START && today <= END;
-const pct = today < START ? 0 : today > END ? 100 : Math.min(100, Math.round((cDay/90)*100));
-
-// Header
-document.getElementById('todayDate').textContent = ff(today);
-document.getElementById('dayInfo').textContent = inCourse ? `День курса: ${cDay} из 90` : today < START ? `До старта: ${diff(today,START)} дн.` : 'Курс завершён';
-document.getElementById('pctLabel').textContent = pct+'%';
-document.getElementById('progFill').style.width = pct+'%';
-
-// --- TABS ---
-let calYear = 2026, calMonth = 5;
-
-function showTab(name, btn) {
-  ['today','drugs','calendar','timeline','shopping'].forEach(t => {
-    document.getElementById('tab-'+t).style.display = t===name ? '' : 'none';
+// Get active drugs for a given date
+function getDrugsForDate(dt) {
+  const d = new Date(dt); d.setHours(0,0,0,0);
+  const mor=[], lun=[], eve=[], brk=[], up=[];
+  DRUGS.forEach(drug => {
+    const ds = new Date(drug.s); ds.setHours(0,0,0,0);
+    const de = new Date(drug.e); de.setHours(0,0,0,0);
+    if (d < ds) { up.push(drug); return; }
+    if (d > de) return;
+    if (isInMiniBreak(drug, d) || isInRodBreak(drug, d)) { brk.push(drug); return; }
+    if (drug.t.includes('утро')) mor.push(drug);
+    if (drug.t.includes('обед')) lun.push(drug);
+    if (drug.t.includes('вечер')) eve.push(drug);
   });
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
-  if(btn) btn.classList.add('on');
-  if(name==='calendar') renderCal();
-  if(name==='drugs') renderDrugs();
-  if(name==='timeline') renderTimeline();
-  if(name==='shopping') renderShopping();
-  if(name==='today') renderToday();
+  return {mor, lun, eve, brk};
 }
 
-// --- TODAY ---
+// TODAY TAB
 function renderToday() {
-  const mor=[], lun=[], eve=[];
-  DRUGS.forEach(d => {
-    const s = getStatus(d, today);
-    if(s==='upcoming'||s==='done') return;
-    if(d.t.includes('утро')) mor.push(d);
-    if(d.t.includes('обед')) lun.push(d);
-    if(d.t.includes('вечер')) eve.push(d);
-  });
-
-  let h = '';
-
-  if(!mor.length && !lun.length && !eve.length) {
-    h = `<div class="empty">${today < START ? 'Курс начнётся<br>'+ff(START) : 'Нет активных препаратов'}</div>`;
+  const {mor, lun, eve} = getDrugsForDate(today);
+  let h='';
+  if (!mor.length && !lun.length && !eve.length) {
+    h=`<div class="empty">${today<START?'Курс начнётся<br>'+ff(START):'Нет активных препаратов'}</div>`;
   } else {
-    [['☀️ УТРОМ — с едой', mor], ['🕐 ОБЕД — до 14:00!', lun], ['🌙 ВЕЧЕРОМ — с едой', eve]].forEach(([lbl, items]) => {
-      if(!items.length) return;
-      h += `<div class="tblock"><div class="tlabel">${lbl}</div>`;
-      items.forEach(d => {
-        h += `<div class="ditem"><div class="ddot" style="background:${d.c}"></div><div class="dname">${d.n}</div><div class="ddose">${d.dose}</div></div>`;
-      });
-      h += '</div>';
+    [['☀️ УТРОМ — с едой',mor],['🕐 ОБЕД — до 14:00!',lun],['🌙 ВЕЧЕРОМ — с едой',eve]].forEach(([lbl,items])=>{
+      if(!items.length)return;
+      h+=`<div class="tblock"><div class="tlabel">${lbl}</div>`;
+      items.forEach(d=>{h+=`<div class="ditem"><div class="ddot" style="background:${d.c}"></div><div class="dname">${d.n}</div><div class="ddose">${d.dose}</div></div>`;});
+      h+='</div>';
     });
   }
-
-  // Upcoming
-  const up = DRUGS.filter(d => { const dd = diff(today, d.s); return dd>0 && dd<=14; });
-  if(up.length) {
-    h += `<div class="section-sep"><div class="sec-mini-label">Скоро добавить</div>`;
-    up.forEach(d => {
-      h += `<div class="urow"><div class="ddot" style="background:${d.c}"></div><span style="flex:1">${d.n}</span><span style="color:var(--yel);font-weight:700">через ${diff(today,d.s)} дн.</span></div>`;
-    });
-    h += '</div>';
+  const up=DRUGS.filter(d=>{const dd=diff(today,d.s);return dd>0&&dd<=14;});
+  if(up.length){
+    h+=`<div class="section-sep"><div class="sec-mini-label">Скоро добавить</div>`;
+    up.forEach(d=>{h+=`<div class="urow"><div class="ddot" style="background:${d.c}"></div><span style="flex:1">${d.n}</span><span style="color:var(--yel);font-weight:700">через ${diff(today,d.s)} дн.</span></div>`;});
+    h+='</div>';
   }
-
-  // Restock
-  const rs = [];
-  DRUGS.forEach(d => {
-    [[d.rs,d.rn],[d.rs2,d.rn2]].forEach(([dt,note]) => {
-      if(dt&&note) { const dd=diff(today,dt); if(dd>=0&&dd<=10) rs.push({n:d.n,note,dd}); }
-    });
-  });
-  if(rs.length) {
-    h += `<div class="restock-box"><div class="restock-title">🛒 Пора докупать!</div>`;
-    rs.forEach(r => { h += `<div class="restock-row">• ${r.n} — ${r.note} (через ${r.dd} дн.)</div>`; });
-    h += '</div>';
+  // Break alerts
+  const alerts=[];
+  const dd=new Date(today);dd.setHours(0,0,0,0);
+  if(dd>=MINI_BREAK_S&&dd<=MINI_BREAK_E) alerts.push('⚠️ ПАУЗА: Ноопепт + CDP-холин + Гинкго — сегодня не принимать!');
+  if(dd>=ROD_BREAK_S&&dd<=ROD_BREAK_E)  alerts.push('⚠️ ПЕРЕРЫВ: Родиола — сегодня не принимать!');
+  if(alerts.length){
+    h+=`<div style="margin-top:14px;padding:11px 13px;background:rgba(255,79,107,.08);border:1px solid rgba(255,79,107,.3);border-radius:10px">`;
+    alerts.forEach(a=>{h+=`<div style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:4px">${a}</div>`;});
+    h+='</div>';
   }
-
-  document.getElementById('tab-today').innerHTML = h;
+  document.getElementById('tab-today').innerHTML=h;
 }
 
-// --- DRUGS ---
+// DRUGS TAB
 function renderDrugs() {
-  const groups = [['fund','#4fd4c8','ФУНДАМЕНТ'],['noot','#4f7cff','НООТРОПНЫЙ БЛОК'],['anti','#ff7c4f','АНТИСТРЕСС']];
-  let h = '';
-  groups.forEach(([g,c,lbl]) => {
-    h += `<div class="group-label" style="color:${c}">${lbl}</div>`;
-    DRUGS.filter(d=>d.g===g).forEach(drug => {
-      const st = getStatus(drug, today);
-      const total = diff(drug.s, drug.e);
-      const elapsed = Math.max(0, Math.min(total, diff(drug.s, today)));
-      const p = st==='upcoming' ? 0 : Math.round((elapsed/total)*100);
-      const dLeft = (st==='active'||st==='perm') ? diff(today,drug.e) : st==='upcoming' ? diff(today,drug.s) : null;
-      const dLeftTxt = dLeft!==null ? (st==='upcoming'?`через ${dLeft} дн.`:`${dLeft} дн. осталось`) : (st==='done'?'завершён':'');
-      const dLeftColor = dLeft!==null && dLeft<=7 ? 'var(--yel)' : st==='upcoming'?'var(--acc)':'var(--tx2)';
-      const showRs = drug.rs && diff(today,drug.rs)>=0 && diff(today,drug.rs)<=14;
-
-      h += `<div class="card">
+  const groups=[['fund','#4fd4c8','ФУНДАМЕНТ'],['noot','#4f7cff','НООТРОПНЫЙ БЛОК'],['anti','#ff7c4f','АНТИСТРЕСС']];
+  let h='';
+  groups.forEach(([g,c,lbl])=>{
+    h+=`<div class="group-label" style="color:${c}">${lbl}</div>`;
+    DRUGS.filter(d=>d.g===g).forEach(drug=>{
+      const st=getStatus(drug,today);
+      const total=diff(drug.s,drug.e);
+      const elapsed=Math.max(0,Math.min(total,diff(drug.s,today)));
+      const p=st==='upcoming'?0:Math.round((elapsed/total)*100);
+      const dLeft=(st==='active'||st==='perm')?diff(today,drug.e):st==='upcoming'?diff(today,drug.s):null;
+      const dLeftTxt=dLeft!==null?(st==='upcoming'?`через ${dLeft} дн.`:`${dLeft} дн. осталось`):(st==='done'?'завершён':'');
+      const dLeftColor=dLeft!==null&&dLeft<=7?'var(--yel)':st==='upcoming'?'var(--acc)':'var(--tx2)';
+      h+=`<div class="card">
         <div class="card-top" style="background:${SC[st]}"></div>
         <div class="card-head">
           <div class="card-name">${drug.n}</div>
@@ -338,68 +292,136 @@ function renderDrugs() {
           <span>${drug.dose} • ${drug.t}</span>
           <span style="font-weight:700;color:${dLeftColor}">${dLeftTxt}</span>
         </div>
-        ${drug.w ? `<div class="warn-txt">⚠ ${drug.w}</div>` : ''}
-        ${showRs ? `<div class="buy-txt">🛒 ${drug.rn} — ${fs(drug.rs)}</div>` : ''}
+        ${drug.w?`<div class="warn-txt">⚠ ${drug.w}</div>`:''}
       </div>`;
     });
   });
-  document.getElementById('tab-drugs').innerHTML = h;
+  document.getElementById('tab-drugs').innerHTML=h;
 }
 
-// --- CALENDAR ---
-function renderCal() {
-  const first = new Date(calYear, calMonth, 1);
-  const last  = new Date(calYear, calMonth+1, 0);
-  let dow = first.getDay(); if(dow===0) dow=7;
+// CALENDAR TAB
+let calYear=2026, calMonth=5;
 
-  let h = `<div class="cal-nav">
+function renderCal() {
+  const first=new Date(calYear,calMonth,1);
+  const last=new Date(calYear,calMonth+1,0);
+  let dow=first.getDay();if(dow===0)dow=7;
+  let h=`<div class="cal-nav">
     <button class="cal-nav-btn" onclick="prevMonth()">‹</button>
     <span class="cal-month">${MOFU[calMonth]} ${calYear}</span>
     <button class="cal-nav-btn" onclick="nextMonth()">›</button>
   </div>
   <div class="cal-wrap">
-    <div class="cal-wd-row">
-      ${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d=>`<div class="cal-wd">${d}</div>`).join('')}
-    </div>
+    <div class="cal-wd-row">${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d=>`<div class="cal-wd">${d}</div>`).join('')}</div>
     <div class="cal-grid">`;
 
-  let cur = new Date(first); cur.setDate(cur.getDate()-(dow-1));
-  for(let w=0; w<6; w++) {
-    for(let d=0; d<7; d++) {
-      const isT = cur.toDateString()===today.toDateString();
-      const isO = cur.getMonth()!==calMonth;
-      const events = DRUGS.filter(drug => {
-        const dd=new Date(cur); dd.setHours(0,0,0,0);
-        const ss=new Date(drug.s); ss.setHours(0,0,0,0);
-        const ee=new Date(drug.e); ee.setHours(0,0,0,0);
-        const inBrk = drug.bs && dd>=drug.bs && dd<=drug.be;
-        return dd>=ss && dd<=ee && !inBrk;
-      });
-      h += `<div class="cal-day${isT?' today':''}${isO?' other':''}">
+  let cur=new Date(first);cur.setDate(cur.getDate()-(dow-1));
+  for(let w=0;w<6;w++){
+    for(let d=0;d<7;d++){
+      const isT=cur.toDateString()===today.toDateString();
+      const isO=cur.getMonth()!==calMonth;
+      const dd=new Date(cur);dd.setHours(0,0,0,0);
+      const {mor,lun,eve,brk}=getDrugsForDate(dd);
+      const allActive=[...mor,...lun,...eve];
+      const inCourseDay = dd>=new Date(2026,5,4) && dd<=END;
+      const dateStr=`${cur.getFullYear()}-${cur.getMonth()}-${cur.getDate()}`;
+
+      h+=`<div class="cal-day${isT?' today':''}${isO?' other':''}" onclick="${isO?'':'openDay('+cur.getFullYear()+','+cur.getMonth()+','+cur.getDate()+')'}">
         <div class="cal-num${isT?' today-num':''}">${cur.getDate()}</div>`;
-      events.slice(0,3).forEach(e => {
-        h += `<div class="cal-ev" style="background:${e.c}22;color:${e.c}">${e.n.split(' ')[0]}</div>`;
+
+      if(brk.length){
+        h+=`<div class="cal-ev" style="background:rgba(255,79,107,.15);color:#ff4f6b">⏸ Пауза</div>`;
+      }
+      const shown=[...new Map(allActive.map(e=>[e.c,e])).values()].slice(0,3);
+      shown.forEach(e=>{
+        h+=`<div class="cal-ev" style="background:${e.c}22;color:${e.c}">${e.n.split(' ')[0]}</div>`;
       });
-      if(events.length>3) h += `<div style="font-size:8px;color:var(--tx3)">+${events.length-3}</div>`;
-      h += '</div>';
+      if(allActive.length>3){
+        h+=`<div style="font-size:8px;color:var(--tx3)">+${allActive.length-3}</div>`;
+      }
+      h+='</div>';
       cur.setDate(cur.getDate()+1);
     }
-    if(cur>last && w>=3) break;
+    if(cur>last&&w>=3)break;
   }
-  h += '</div></div>';
-  document.getElementById('tab-calendar').innerHTML = h;
+  h+='</div></div>';
+  document.getElementById('tab-calendar').innerHTML=h;
 }
 
-function prevMonth(){ calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCal(); }
-function nextMonth(){ calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCal(); }
+function prevMonth(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();}
+function nextMonth(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();}
 
-// --- TIMELINE ---
+// OPEN DAY MODAL
+function openDay(year, month, day) {
+  const dt = new Date(year, month, day); dt.setHours(0,0,0,0);
+  const {mor, lun, eve, brk} = getDrugsForDate(dt);
+  const allActive = [...mor, ...lun, ...eve];
+
+  document.getElementById('modalDate').textContent = ff(dt);
+
+  const dNum = diff(new Date(2026,5,4), dt) + 1;
+  const inC = dt >= new Date(2026,5,4) && dt <= END;
+  document.getElementById('modalTitle').textContent = inC ? `День курса ${dNum}` : dt < new Date(2026,5,4) ? 'До старта' : 'После курса';
+
+  let body = '';
+
+  if (brk.length) {
+    body += `<div class="pause-notice" style="margin-bottom:14px">`;
+    brk.forEach(d => {
+      const isPause = d.mb && dt >= MINI_BREAK_S && dt <= MINI_BREAK_E;
+      const isRod = d.rb && dt >= ROD_BREAK_S && dt <= ROD_BREAK_E;
+      if (isPause) body += `⏸ ${d.n} — ПАУЗА (18–31 авг.)<br>`;
+      if (isRod)   body += `⏸ ${d.n} — ПЕРЕРЫВ (13–26 авг.)<br>`;
+    });
+    body += '</div>';
+  }
+
+  if (!allActive.length && !brk.length) {
+    body += `<div style="color:var(--tx2);font-size:13px;text-align:center;padding:20px 0">${dt < new Date(2026,5,4) ? 'Курс ещё не начался' : 'Нет активных препаратов'}</div>`;
+  } else {
+    [['☀️ УТРОМ — с едой', mor], ['🕐 ОБЕД — до 14:00', lun], ['🌙 ВЕЧЕРОМ — с едой', eve]].forEach(([lbl, items]) => {
+      if (!items.length) return;
+      body += `<div class="modal-section">
+        <div class="modal-sec-label">${lbl}</div>`;
+      items.forEach(d => {
+        body += `<div class="modal-drug">
+          <div class="ddot" style="background:${d.c}"></div>
+          <div class="modal-drug-name">${d.n}</div>
+          <div class="modal-drug-dose">${d.dose}</div>
+        </div>`;
+      });
+      body += '</div>';
+    });
+  }
+
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal(e) {
+  if (e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
+}
+
+// TIMELINE TAB
 function renderTimeline() {
-  let h = '';
-  TIMELINE.forEach(ev => {
-    const past = today > ev.dt;
-    const isCur = today.toDateString()===ev.dt.toDateString();
-    h += `<div class="tl-item" style="opacity:${past?.5:1}">
+  const events=[
+    {dt:new Date(2026,5,4),   l:"СТАРТ курса",              d:"Фундамент: Омега-3, D3, B, Теанин, Магний",    c:"#4fd4c8"},
+    {dt:new Date(2026,5,18),  l:"Неделя 3",                 d:"+ CDP-холин + Гинкго + Ноопепт (утро+обед)",   c:"#4f7cff"},
+    {dt:new Date(2026,5,25),  l:"Неделя 4",                 d:"+ Lion's Mane (вечером)",                       c:"#ff7c4f"},
+    {dt:new Date(2026,6,2),   l:"Неделя 5",                 d:"+ Родиола розовая (утром)",                     c:"#2ecc8a"},
+    {dt:new Date(2026,6,9),   l:"Неделя 6 — ПОЛНЫЙ СТЭК",  d:"+ Бакопа Himalaya (вечером)",                   c:"#9b59ff"},
+    {dt:new Date(2026,7,13),  l:"Родиола — ПЕРЕРЫВ",        d:"Не принимать 14 дней (до 26 августа)",          c:"#ff4f6b"},
+    {dt:new Date(2026,7,18),  l:"Ноопепт+CDP+Гинкго — ПАУЗА","Мини-перерыв 14 дней (до 31 августа)",          c:"#ff4f6b"},
+    {dt:new Date(2026,7,27),  l:"Родиола — возобновить",    d:"Продолжить приём до 6 октября",                 c:"#2ecc8a"},
+    {dt:new Date(2026,8,1),   l:"Ноопепт+CDP+Гинкго — старт",d:"Возобновить после мини-перерыва",             c:"#4f7cff"},
+    {dt:new Date(2026,9,6),   l:"КОНЕЦ КУРСА",              d:"Перерыв 1 месяц для всех курсовых препаратов",  c:"#ff4f6b"},
+    {dt:new Date(2026,10,7),  l:"СТАРТ ЦИКЛА 2",            d:"Новый усиленный курс",                          c:"#4f7cff"},
+  ];
+  let h='';
+  events.forEach(ev=>{
+    const past=today>ev.dt;
+    const isCur=today.toDateString()===ev.dt.toDateString();
+    h+=`<div class="tl-item" style="opacity:${past?.5:1}">
       <div class="tl-date">${fs(ev.dt)}</div>
       <div class="tl-dot" style="background:${ev.c}"></div>
       <div class="tl-body">
@@ -408,39 +430,21 @@ function renderTimeline() {
       </div>
     </div>`;
   });
-  document.getElementById('tab-timeline').innerHTML = h;
+  document.getElementById('tab-timeline').innerHTML=h;
 }
 
-// --- SHOPPING ---
-function renderShopping() {
-  let h = '';
-  PURCHASES.forEach(p => {
-    const past = today > p.dt;
-    h += `<div class="shop-card" style="background:${p.col}18;border:1px solid ${p.col}44;opacity:${past?.6:1}">
-      <div class="shop-head" style="background:${p.col}">
-        <span class="shop-head-lbl">${p.l}</span>
-        <span class="shop-head-date">${fs(p.dt)}</span>
-      </div>
-      <div class="shop-body">`;
-    if(p.oz.length) {
-      h += `<div class="shop-sec" style="margin-bottom:6px">OZON</div>`;
-      p.oz.forEach(([n,pr]) => { h += `<div class="shop-row"><span>• ${n}</span><span style="color:var(--yel)">${pr}</span></div>`; });
-    }
-    if(p.ap.length) {
-      h += `<div class="shop-sec" style="margin:9px 0 6px">Аптека</div>`;
-      p.ap.forEach(([n,pr]) => { h += `<div class="shop-row"><span>• ${n}</span><span style="color:var(--yel)">${pr}</span></div>`; });
-    }
-    h += `<div class="shop-total">Итого: ${p.tot}</div></div></div>`;
+function showTab(name,btn){
+  ['today','drugs','calendar','timeline'].forEach(t=>{
+    document.getElementById('tab-'+t).style.display=t===name?'':'none';
   });
-  h += `<div class="total-card">
-    <div class="total-row"><span>Стартовые покупки</span><span>~10 581₽</span></div>
-    <div class="total-row"><span>Докупки по ходу</span><span>~7 931₽</span></div>
-    <div class="total-final"><span>ИТОГО на курс</span><span style="color:var(--acc)">~18 512₽</span></div>
-  </div>`;
-  document.getElementById('tab-shopping').innerHTML = h;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  if(btn)btn.classList.add('on');
+  if(name==='calendar')renderCal();
+  if(name==='drugs')renderDrugs();
+  if(name==='timeline')renderTimeline();
+  if(name==='today')renderToday();
 }
 
-// Init
 renderToday();
 </script>
 </body>
